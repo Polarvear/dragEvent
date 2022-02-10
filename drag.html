@@ -17,6 +17,9 @@
     // dragstart, dragover, drop 세가지 만들 것임
     let picked = null
     list.addEventListener("dragstart", (e) => {   //dragstart의 모든 event가 e 안에 들어있음.
+        const obj = e.target
+        console.log(obj.parentNode.children.indexOf(obj)) // 타겟의 정보 확인
+        console.log({ obj })
         picked = e.target
         //console.log(e)
 
