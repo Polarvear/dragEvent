@@ -16,12 +16,14 @@
     const list = document.querySelector(".list")
     // dragstart, dragover, drop 세가지 만들 것임
     let picked = null
+    let pickedIndex = null
     list.addEventListener("dragstart", (e) => {   //dragstart의 모든 event가 e 안에 들어있음.
         const obj = e.target
-        console.log([...obj.parentNode.children].indexOf(obj)) // 타겟의 정보 확인
-        //html collection 을 배열로 바꾸는 방법 분해할당 방법
+        //console.log([...obj.parentNode.children].indexOf(obj)) // 타겟의 정보 확인
+        //html collection 을 배열로 바꾸는 방법 구조분해할당 방법
         console.log({ obj })
-        picked = e.target
+        picked = obj
+        pickedIndex = [...obj.parentNode.children].indexOf(obj)
         //console.log(e)
 
     })
@@ -30,6 +32,8 @@
 
     })
     list.addEventListener("drop", (e) => {
+        const obj = e.target
+        const index = [...obj.parentNode.children].indexOf(obj)
         e.target.before(picked)//before 메서드 사용
     })
 
