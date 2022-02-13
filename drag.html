@@ -34,7 +34,10 @@
     list.addEventListener("drop", (e) => {
         const obj = e.target
         const index = [...obj.parentNode.children].indexOf(obj)
-        e.target.before(picked)//before 메서드 사용
+        if (index > pickedIndex) {
+            obj.after(picked)
+        }
+        //e.target.before(picked)//before 메서드 사용
     })
 
 </script>
